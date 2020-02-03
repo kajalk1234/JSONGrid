@@ -39,6 +39,7 @@ module powerbi.extensibility.visual {
     export class Grid implements IVisual {
         public errorMsg: d3.Selection<SVGAElement>;
         public dataView: DataView;
+        private events: IVisualEventService ;
         public host: IVisualHost;
         private svg: d3.Selection<SVGAElement>;
         private xAxis: d3.Selection<SVGAElement>;
@@ -51,8 +52,8 @@ module powerbi.extensibility.visual {
 
         constructor(options: VisualConstructorOptions) {
             this.host = options.host;
+            this.events = options.host.eventService;
             this.selectionManager = options.host.createSelectionManager();
-            //this.viewport;
             this.target = options.element;
 
             this.svg = this.svg = d3.select(options.element).append('div')
@@ -69,7 +70,7 @@ module powerbi.extensibility.visual {
          *                                        the visual had queried.
          */
         public update(options: VisualUpdateOptions) : VisualUpdateOptions {
-
+            this.events.renderingStarted(options);
             let dataViews : DataView[];
             dataViews  = options.dataViews;
 
@@ -104,11 +105,12 @@ module powerbi.extensibility.visual {
             }
             d3.select('.DataDiv').style('overflow', 'auto');
             const settingsChanged: boolean = this.getSettings(dataView.metadata.objects);
-            if (!this.gridVisual || settingsChanged
+            if (settingsChanged
                 || ((options.type && VisualUpdateType.Resize) || options.type && VisualUpdateType.ResizeEnd)) {
                 this.svg.selectAll('*').remove();
                 this.gridVisual = myMAQlibrary(dataView, this.settings);
             }
+            this.events.renderingFinished(options);
         }
         /**
          * Enumerates through the objects defined in the capabilities and adds the properties to the format pane
@@ -148,13 +150,9 @@ module powerbi.extensibility.visual {
             return objectEnumeration;
         }
 
-        public destroy(): void {
-            //TODO: Perform any cleanup tasks here
-        }
-
         private getSettings(objects: DataViewObjects): boolean {
             let settingsChanged: boolean = false;
-            if (typeof this.settings === 'undefined' || (JSON.stringify(objects) !== JSON.stringify(this.prevDataViewObjects))) {
+            if (this.settings === undefined || (JSON.stringify(objects) !== JSON.stringify(this.prevDataViewObjects))) {
                 this.settings = {
                     fontSize: getValue<number>(objects, 'GridConfig', 'fontSize', 12),
                     maxRows: getValue<number>(objects, 'GridConfig', 'maxRows', 5),
