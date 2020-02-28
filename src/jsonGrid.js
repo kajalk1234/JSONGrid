@@ -330,7 +330,9 @@ var MAQUtility;
         for (iCounter; iCounter < oStyles.length; iCounter += 1) {
             try {
                 oNode.style[oStyles[iCounter]] = oStyleObject[oStyles[iCounter]];
-            } catch (exception) { }
+            } catch (exception) { 
+                // Do nothing 
+            }
         }
         return;
     }
@@ -1762,7 +1764,9 @@ MAQ.applyStyleToObject = function (oGridObject, oStyleObject) {
     for (iCounter; iCounter < oStyles.length; iCounter += 1) {
         try {
             oGridObject.style[oStyles[iCounter]] = oStyleObject[oStyles[iCounter]];
-        } catch (e) { }
+        } catch (exception) { 
+            // Do nothing 
+        }
     }
 };
 
