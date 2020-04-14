@@ -330,7 +330,9 @@ var MAQUtility;
         for (iCounter; iCounter < oStyles.length; iCounter += 1) {
             try {
                 oNode.style[oStyles[iCounter]] = oStyleObject[oStyles[iCounter]];
-            } catch (exception) { }
+            } catch (exception) { 
+                // Do nothing 
+            }
         }
         return;
     }
@@ -461,7 +463,7 @@ var MAQUtility;
             attribute;
         if (oObject && oObject.length) {
             len = oObject.length;
-        };
+        }
         if (null === oObject || "object" !== typeof oObject) {
             return oObject;
         }
@@ -513,7 +515,7 @@ var MAQUtility;
         }
         return sText;
     }
-    MAQUtility.applyFormatter = applyFormatter;;
+    MAQUtility.applyFormatter = applyFormatter;
 })(MAQUtility || (MAQUtility = {}));
 /// <disable>JS2025.InsertSpaceBeforeCommentText</disable>
 
@@ -586,7 +588,7 @@ function thousandFormatter(sInput, iDecimalPlaces) {
     } else {
         return "0";
     }
-};
+}
 
 // insertCommasOnly: Formats the number in comma separator format (x,xxx,xxx.xx).
 function insertCommasOnly(sInput, iDecimalPlaces) {
@@ -622,7 +624,7 @@ function insertCommasOnly(sInput, iDecimalPlaces) {
         return "0";
     }
     return sFinalValue;
-};
+}
 
 /// <disable>S1003.SemanticAnalysisHalted,JS3092.DeclarePropertiesBeforeUse,JS2032.PlaceLiteralsOnRightSideInComparisons,JS3057.AvoidImplicitTypeCoercion,JS3054.NotAllCodePathsReturnValue</disable>
 /// <dictionary target='member'>Config,sortby,sortorder,viewrecords,oParam, Param, aTrs</dictionary>
@@ -676,7 +678,8 @@ MAQ.getAdjustedRowChunk = function (inputData, width) {
 MAQ.getAdjustedRowChunkAndToolTip = function (inputData, width) {
     width = width || "100";
     width = width.replace("%", "").replace("px", "");
-    return "<span class='jsonGridOverflow' title='' + inputData + '' style='width: ' + (width - 15 >= 15 ? width - 15 : 15) + 'px;'>' + inputData + '</span>";
+    fifteen = 15;
+    return "<span class='jsonGridOverflow' title='' + inputData + '' style='width: ' + (width - ${fifteen} >= ${fifteen} ? width - ${fifteen} : ${fifteen}) + 'px;'>' + inputData + '</span>";
 };
 MAQ.setViewRecords = function (oCurrentGridConfiguration) {
     /// <disable>JS3058</disable>
@@ -1762,7 +1765,9 @@ MAQ.applyStyleToObject = function (oGridObject, oStyleObject) {
     for (iCounter; iCounter < oStyles.length; iCounter += 1) {
         try {
             oGridObject.style[oStyles[iCounter]] = oStyleObject[oStyles[iCounter]];
-        } catch (e) { }
+        } catch (exception) { 
+            // Do nothing 
+        }
     }
 };
 
