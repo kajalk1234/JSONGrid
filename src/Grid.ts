@@ -78,7 +78,7 @@ module powerbi.extensibility.visual {
                 const dataView: DataView = options.dataViews[0];
                 let flag: number = 0;
                 for (i = 0; i < dataView.table.columns.length; i++) {
-                    if (dataView.table.columns[i].roles.hasOwnProperty('Values')) {
+                    if (dataView.table.columns[i].roles.Values) {
                         flag = 1;
                         break;
                     }

@@ -34,6 +34,7 @@ module powerbi.extensibility.visual {
      * @param {IColorInfo[]} colors - Array of ColorInfo objects that contain
      *                                hex values for colors.
      */
+     // eslint-disable-next-line no-inner-declarations
     export function createColorPalette(colors: IColorInfo[]): IColorPalette {
         if (!colorManager)
             colorManager = new ColorPalette(colors);

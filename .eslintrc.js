@@ -21,9 +21,6 @@ module.exports = {
     ],
     "rules": {
         "no-undef": 0,
-        "no-unused-vars": 0,
-        "no-prototype-builtins": 0,
-        "no-redeclare": 0,
-        "no-useless-escape": 0
+        "no-unused-vars":0
     }
 };
