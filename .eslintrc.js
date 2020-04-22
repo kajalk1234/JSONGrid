@@ -20,7 +20,9 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
-        "no-undef": 0,
-        "no-unused-vars":0
+        "no-undef": 0, // Disabled for errors on powerbi ( line: 3 )
+        "no-unused-vars": 0, 
+        "no-useless-escape": 0, // Disabled for regex ( line : 1690 )
+        "no-inner-declarations": 0 // Disabled for objectEnumerationUtility and colorPalette file
     }
 };

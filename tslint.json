@@ -6,6 +6,5 @@
     "rules": {
     "no-internal-module": false,
     "no-namespace": false
-    },
-    "jsRules": { "no-empty": true }
+    }
 }

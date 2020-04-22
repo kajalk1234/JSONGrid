@@ -8,7 +8,6 @@ module powerbi.extensibility.visual {
      * @param {string} propertyName     - Name of desired property.
      * @param {T} defaultValue          - Default value of desired property.
      */
-     // eslint-disable-next-line no-inner-declarations
     export function getValue<T>(objects: DataViewObjects, objectName: string, propertyName: string, defaultValue: T): T {
         if (objects) {
             let object = objects[objectName];
@@ -32,10 +31,8 @@ module powerbi.extensibility.visual {
      * @param {string} propertyName             - Name of desired property.
      * @param {T} defaultValue                  - Default value of desired property.
      */
-     // eslint-disable-next-line no-inner-declarations
     export function getCategoricalObjectValue<T>(category: DataViewCategoryColumn, index: number, objectName: string, propertyName: string, defaultValue: T): T {
         let categoryObjects = category.objects;
-
         if (categoryObjects) {
             let categoryObject: DataViewObject = categoryObjects[index];
             if (categoryObject) {

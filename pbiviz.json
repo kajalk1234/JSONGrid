@@ -1,8 +1,8 @@
 {
   "visual": {
-    "name": "GridByMAQSoftware",
+    "name": "GridByMAQSoftwareTest",
     "displayName": "Grid by MAQ Software",
-    "guid": "PBI_CV_309E6B47_39A5_4681_808F_132AFB230860",
+    "guid": "PBI_CV_309E6B47_39A5_4681_808F_132AFB230860_1",
     "visualClassName": "Grid",
     "version": "3.1.0",
     "description": "Grid with Pagination, Sorting and GET Rest API call functionality",

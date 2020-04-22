@@ -78,7 +78,7 @@ module powerbi.extensibility.visual {
                 const dataView: DataView = options.dataViews[0];
                 let flag: number = 0;
                 for (i = 0; i < dataView.table.columns.length; i++) {
-                    if (dataView.table.columns[i].roles.Values) {
+                    if ( {}.hasOwnProperty.call(dataView.table.columns[i].roles, 'Values')) {
                         flag = 1;
                         break;
                     }
@@ -134,7 +134,6 @@ module powerbi.extensibility.visual {
                         }
                     });
                     break;
-
                 default:
                     {
                         break;
